@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1>ToDo List</h1>
+        <input type="text" id="input-text" class="input">
+        <input type="button" value="Add" id="btnClick" class="btn" onclick="addMore()">
+        <div><span id="error"></span></div>
+       
+    </div>
+    <div class="box2">
+        <ul id="box"></ul>
+    </div>
+
+    <style>
+        .container,.box2 {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px 20px 50px 20px;
+}
+        body{
+    background-color: rgb(255 84 0 / 27%);
+}
+h1 {
+    color: #12967d;
+}
+.container {
+    border: 0;
+    text-align: center;
+    background: whitesmoke;
+    border-radius: 10px;
+    /* height: 150px; */
+    margin-top: 25px;
+    box-shadow: 0 3px 0 2px rgba(185, 183, 183, 0.651);
+    padding: 10px 20px 50px 20px;
+}
+span{
+    color: red;
+    font-size: 20px;
+}
+.input {
+    width: 60%;
+    border: 0.1px solid gray;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 9px 20px;
+}
+.btn {
+    background-color: rgb(255 141 0);
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 9px 20px;
+    cursor: pointer;
+}
+button {
+    background-color: orange;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0px;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 9px 20px;
+}
+ul{
+    list-style: none;
+    text-transform: capitalize;
+}
+li {
+    color: #000;
+    font-size: 24px;
+}
+.box2{
+    background: whitesmoke;
+    border: 0;
+    border-radius: 10px;
+    height: 400px;
+    margin-top:25px;
+    box-shadow: 0 3px 0 2px  rgba(185, 183, 183, 0.651);
+    
+}
+        </style>
+   <script>
+    function addMore() {
+    document.getElementById('error').innerHTML = '';
+    var text = document.getElementById('input-text').value;
+    if (text === '') {
+        document.getElementById('error').innerHTML = 'Enter any value';
+    } else {
+        var box = document.getElementById('box');
+        var li = document.createElement('li');
+        li.textContent = text;        
+        var deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.onclick = function () {
+            box.removeChild(li);
+        };
+        li.appendChild(deleteBtn);
+
+        // Create the edit button
+        var editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.onclick = function () {
+            // var text = document.getElementById('input-text').value;
+            // var li = document.getElementsByTagName("li").textContent;
+            // console.log(li)
+            // var newText = prompt('Enter new value'); 
+            // if (newText) {
+            //     li.textContent = newText; 
+            // }
+        };
+       // li.appendChild(editBtn);
+
+        box.appendChild(li);
+    }
+    document.getElementById('input-text').value = '';
+}
+   </script>
+</body>
+
+</html>
